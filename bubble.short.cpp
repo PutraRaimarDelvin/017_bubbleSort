@@ -21,6 +21,18 @@ void input() {
     }
 }
 
+void bubbleSortArray() {
+    for (int i = 1; i < n; i++) {
+        for (int j = 0; j < n - i; j++) {
+            if (a[j] > a[j + 1]) {
+                int temp = a[j];
+                a[j] = a[j + 1];
+                a[j + 1] = temp;
+            }
+        }
+    }
+}
+
 void display() {
     cout << "\nElemen Array:\n";
     for (int i = 0; i < n; i++) {
@@ -30,6 +42,7 @@ void display() {
 
 int main() {
     input();
+    bubbleSortArray();
     display();
     return 0;
 }
