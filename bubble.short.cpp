@@ -12,8 +12,12 @@ void input() {
         if (n <= 20)
             break;
         else
-            cout << "Array maksimal 20 elemen.\n";
+            cout << "\nArray maksimal 20 elemen.\n";
     }
+
+    cout << "\n====================\n";
+    cout << "Masukkan Elemen Array\n";
+    cout << "====================\n";
 
     for (int i = 0; i < n; i++) {
         cout << "Data ke-" << (i + 1) << ": ";
@@ -34,7 +38,10 @@ void bubbleSortArray() {
 }
 
 void display() {
-    cout << "\nElemen Array:\n";
+    cout << "\n=================================\n";
+    cout << "Elemen Array yang telah tersusun\n";
+    cout << "=================================\n";
+
     for (int i = 0; i < n; i++) {
         cout << a[i] << endl;
     }
