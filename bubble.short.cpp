@@ -21,7 +21,15 @@ void input() {
     }
 }
 
+void display() {
+    cout << "\nElemen Array:\n";
+    for (int i = 0; i < n; i++) {
+        cout << a[i] << endl;
+    }
+}
+
 int main() {
     input();
+    display();
     return 0;
 }
