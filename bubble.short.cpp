@@ -1,60 +1,97 @@
 #include <iostream>
+#include <string>
 using namespace std;
 
+int arr[20]; // Deklarasi variable global array a dengan ukuran 20
+int n;       // Deklarasi variabel global n untuk menyimpan banyaknya elemen pada array
 
-int a[20];			// Deklarasi array a dengan ukuran 20
-int n;				// Deklarasi variabel a untuk menyiapkan banyaknya elemen pada array
+void input()
+{ // procedur untuk input
+    int d;
+    while (true)
+    {
+        cout << "Masukan banyaknya elemen pada array : "; // Output ke layar
+        cin >> n;                                         // Input dari pengguna
+        if (n <= 20)                                      // Jika n kurang dari atau sama dengan 20
+            break;                                        // Keluar dari loop
+        else
+        {
+            cout << "\nArray dapat mempunyai maksimal 20 elemen.\n"; // Output ke layar
+        }
+    }
 
+    cout << endl;
+    cout << "=====================" << endl;
+    cout << "Masukan Elemen Array" << endl;
+    cout << "=====================" << endl;
 
-void input() {		// Method untuk input
-	while (true) {	// Looping
-		cout << "Masukkan banyaknya elemen pada array : ";	//output ke layar
-		cin >> n;		// Input dari pengguna
-		if (n <= 20)	// Jika n kurang dari atau sama dengan 20
-			break;		// Keluar dari loop
-		else {			// Jika n lebib dari 20
-			cout << "\nArray dapat mempunyai maksimal 20 elemen.\n";	// Output ke layar
-		}
-	}
-	cout << endl;								// Output ke layar					
-	cout << "====================" << endl;		// Output ke layar
-	cout << "Masukkan Elemen Array" << endl;	// Output ke layar
-	cout << "====================" << endl;		// Output ke layar
-
-	for (int i = 0; i < n; i++) {	// Looping dengan i dimulai dari o hingga n-1
-		cout << "Data ke-" << (i + 1) << ": ";	// Output ke layar
-		cin >> a[i];				// Input dari pengguna
-	} 
+    for (int i = 0; i < n; i++) // Looping dengan i dimulai dari 0 hingga n-1
+    {
+        cout << "Data ke-" << (i + 1 ) << ": ";
+        cin >> arr[i];
+    }
 }
+void bubbleSortArray()
+{
+    // procedur untuk mengurutkan array dengan metode bubble sort
+    int pass = 1; // step 1
 
-void display() {	// Method untuk menampilkan hasil	
-	cout << endl;											// Output baris kosong	
-	cout << "=================================" << endl;	// Output ke layar
-	cout << "Elemen Array yang telah tersusun" << endl;		// Output ke layar
-	cout << "=================================" << endl;	// Output ke layar
-	for (int j = 0; j < n; j++) {					// Looping dengan j dimulai dari 0 hingga n-1
-		cout << a[j] << endl;						// Output ke layar
-	}
-	cout << endl;									// Output baris kosong
+    do
+    {
+        for (int j = 0; j <= n - 1 - pass; j++)
+        { // step 2
+            if (arr[j] > arr[j + 1])
+            { // step 3
+                int temp;
+                temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
+        }
+
+        pass += 1; // step 4
+
+        cout << "\nPass " << pass - 1 << ": "; // Number of pass
+        for (int k = 0; k < n; k++)
+        {
+            cout << arr[k] << " "; // Menampilkan data pada number of pass
+        }
+        cout << endl;
+
+    } while (pass <= n - 1); // step 5
 }
-void bubbleSortArray(){		// Method untuk mengurutkan array dengan metode bubble sort
-		for (int i = 1; i < n; i++) {		//looping dengan i dumukai dari 1 hingga n-1
-			for (int j = 0; j < n - i; j++) {	// Looping denga j dimulai dari 0 hingga n-i-1
-				if (a[j] > a[j + 1]) {			// Jika nilai pada a[j] lebih besar dari a[j+!]
-					int temp = a[j];			// Simpan nilai a[j] ke variabel sementara temp
-					a[j] = a[j + 1];			// Assign nilai a[j+1] ke a[j]
-					a[j + 1] = temp;			// Assign nilai temp ke a[j+1}
-			}
-		}
-	}
-	
+void display()
+{
+    cout << endl;
+    cout << "===============================" << endl;
+    cout << "Element Array yang telah tersusun" << endl;
+    cout << "===============================" << endl;
+    cout << endl;
+
+    for (int j = 0; j < n; j++)
+    {
+        cout << arr[j];
+        if (j < n - 1)
+        {
+            cout << " --> ";
+        }
+    }
+
+    cout << endl;
+    cout << endl;
+
+    cout << "Jumlah pass = " << n - 1 << endl; 
+    cout << endl;
+    cout << endl;
 }
+int main()
+{
 
+    input();
 
-int main() {
-	// Membuat obj dari class BubbleSort
-	input();	// Memanggil read() dari class BubbleSort
-	bubbleSortArray();	// Memamanggil bubbleSortArray() dari class BubbleSort
-	display();	// Memanggil display() dari class BubbleSort
-	return 0;
+    bubbleSortArray();
+    display();
+
+    system("pause");
+    return 0;
 }
